@@ -27,7 +27,9 @@ class SimpleSkipGramOptimizer(
 
     fun update(network: SimpleSkipGram) {
         update(inLayerOptimizer, network.inLayer)
-        outLayerOptimizers.indices.forEach { update(outLayerOptimizers[it], network.outLayers[it]) }
+        outLayerOptimizers.indices.forEach {
+            update(outLayerOptimizers[it], network.outLayers[it])
+        }
     }
 }
 

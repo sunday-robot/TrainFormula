@@ -44,7 +44,9 @@ class SimpleSkipGram(
     fun loss(x: Int, t: List<Int>): Float {
         val y = predict(x)
         var l = 0f
-        y.indices.forEach { l += crossEntropyError(y[it], t[it]) }
+        y.indices.forEach {
+            l += crossEntropyError(y[it], t[it])
+        }
         return l
     }
 
@@ -57,7 +59,9 @@ class SimpleSkipGram(
 
             olf[t[index]] -= 1f
             val olb = outLayers[index].backward(olf)
-            olbSum.indices.forEach { olbSum[it] += olb[it] }
+            olbSum.indices.forEach {
+                olbSum[it] += olb[it]
+            }
         }
         inLayer.backward(olbSum)
     }
